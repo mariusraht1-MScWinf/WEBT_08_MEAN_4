@@ -25,34 +25,33 @@ export class AppComponent {
   }
 
   //other fetch-requests
-  public async postData(data: {name: string}) {
+  public async postData(data: { name: string }) {
     const response = await fetch('/listitem', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
     return response.json();
   }
 
   public async deleteData(id: string) {
     const response = await fetch('/listitem/' + id, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
     return response.json();
   }
 
-
   // Eventhandler
   async addItem(value: string) {
-    this.postData({name: value}).then(response => {
+    this.postData({ name: value }).then((response) => {
       this.makeRequest();
     });
   }
 
   async deleteItem(id: string) {
-    this.deleteData(id).then(response => {
+    this.deleteData(id).then((response) => {
       this.makeRequest();
     });
   }
